@@ -13,7 +13,7 @@ function Player() {
     time,
     previous,
     next,
-    seekSong
+    seekSong,
   } = useContext(PlayerContext);
   // console.log("track",track);
   return (
@@ -66,7 +66,8 @@ function Player() {
             {time.currentTime.minute}:{time.currentTime.second}
           </p>
           <div
-            ref={seekBgRef} onClick={seekSong}
+            ref={seekBgRef}
+            onClick={seekSong}
             className="w-[400vw] max-w-[130px] md:max-w-[500px] bg-gray-300 rounded-full cursor-pointer"
           >
             <hr
@@ -74,10 +75,13 @@ function Player() {
               className="h-1 border-none w-0 bg-green-800 rounded-full"
             />
           </div>
-          <p>
-          {/* //why NaN:NaN? */}
-            {time.totalTime.minute}:{time.totalTime.second}
-          </p>
+          {!isNaN(time.totalTime.minute) && !isNaN(time.totalTime.second) ? (
+            <p>
+              {time.totalTime.minute}:{time.totalTime.second}
+            </p>
+          ) : (
+            <p>00:00</p>
+          )}
         </div>
       </div>
       <div className="hidden lg:flex items-center gap-2 opacity-75">

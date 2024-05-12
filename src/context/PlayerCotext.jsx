@@ -34,7 +34,6 @@ const PlayerContextProvider = (props) => {
       await setTrack(songsData[track.id - 1]);
       await audioRef.current.play();
       setPlayerStatus(true);
-      setTime(time)
     }
   };
 
@@ -43,7 +42,6 @@ const PlayerContextProvider = (props) => {
       await setTrack(songsData[track.id + 1]);
       await audioRef.current.play();
       setPlayerStatus(true);
-      setTime(time)
     }
   };
   
